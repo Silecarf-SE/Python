@@ -18,8 +18,8 @@ version = "1.21.0"
 geographiclib = ">=1.49,<2"
 
 [metadata]
-content-hash = "964164411b373ac49a8bae5b06bfff3adf4e4d8bfe96ef9e880b44f89bc429b3"
-python-versions = "^3.8"
+content-hash = "7f4d9609d3cfac059edc760fa197286554a19b63271cacc0eb86928985a2adfa"
+python-versions = "^3.7"
 
 [metadata.hashes]
 geographiclib = ["12bd46ee7ec25b291ea139b17aa991e7ef373e21abd053949b75c0e9ca55c632", "51cfa698e7183792bce27d8fb63ac8e83689cd8170a730bf35e1a5c5bf8849b9"]
