@@ -39,3 +39,23 @@ elif x==3:
   print("x=3")
 else:
   print("x<2")
+
+def chat(name1,name2,point):
+  print("%s : this is function test, %s" % (name1, name2))
+  print("%s : this is fun. %d/10" % (name2,point))
+
+chat("알렉스","윤하",9)
+
+a=1
+b=2
+c=a+b
+
+x=1
+y=2
+z=x+y
+def dsum(left,right):
+  result = left+right
+  return result
+
+d=dsum(9,2)
+print(d)
