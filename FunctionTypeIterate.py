@@ -73,7 +73,7 @@ sayHello("윤하",8)
 sayHello("철수",18)
 sayHello("복순",58)
 i=0
-while(i<5):
+while i<5:
   print(i)
   i=i+1
 
