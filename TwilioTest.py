@@ -12,9 +12,9 @@ client = Client(account_sid, auth_token)
 
 message = client.messages \
                 .create(
-                     body="아빠, 이거 테스트",
+                     body="오레, 이거 테스트",
                      from_='+14159650576',
-                     to='+821083309120'
+                     to='+821025889120'
                  )
 
 print(message.sid)
